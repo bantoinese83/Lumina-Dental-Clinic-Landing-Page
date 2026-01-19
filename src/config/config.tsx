@@ -116,7 +116,7 @@ export const siteConfig: SiteConfig = {
         title: 'Full Arch Implant',
         category: 'RESTORATIVE',
         image:
-          'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?q=80&w=1600&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=1600&auto=format&fit=crop',
         span: 'third',
       },
       {
@@ -132,7 +132,7 @@ export const siteConfig: SiteConfig = {
         title: 'Smile Makeover',
         category: 'COMPLETE CARE',
         image:
-          'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1600&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1606811835619-0cd1f4d1c1c4?q=80&w=1600&auto=format&fit=crop',
         span: 'full',
       },
     ],
