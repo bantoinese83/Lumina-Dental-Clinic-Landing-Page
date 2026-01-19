@@ -4,11 +4,35 @@ import Reveal from './ui/Reveal';
 import Counter from './ui/Counter';
 import Badge from './ui/Badge';
 import TiltCard from './ui/TiltCard';
-import DentistryIcon from './ui/DentistryIcon';
+import { Calendar, User, Trophy, Star } from 'lucide-react';
 import { siteConfig } from '../config/config';
 
 const Hero: React.FC = () => {
   const { hero, metrics } = siteConfig;
+
+  // Map hero status icon to Lucide React component
+  const getHeroStatusIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'calendar':
+        return Calendar;
+      default:
+        return Calendar; // fallback
+    }
+  };
+
+  // Map metric icons to Lucide React components
+  const getMetricIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'user':
+        return User;
+      case 'award':
+        return Trophy;
+      case 'star':
+        return Star;
+      default:
+        return User; // fallback
+    }
+  };
 
   return (
     <section className='relative pt-40 pb-20 md:pt-52 md:pb-32 overflow-hidden z-10 perspective-1000'>
@@ -61,7 +85,7 @@ const Hero: React.FC = () => {
 
                 <div className='relative bg-white flex group-hover:shadow-lg transition-all md:h-16 h-12 z-10 rounded-full px-2 items-center gap-4 pr-6'>
                   <div className='ml-1 md:w-10 md:h-10 w-8 h-8 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center'>
-                    <DentistryIcon name={hero.status.icon} size={18} />
+                    {React.createElement(getHeroStatusIcon('calendar'), { size: 18 })}
                   </div>
                   <div className='flex flex-col text-left'>
                     <span className='text-[10px] uppercase tracking-widest text-teal-600/80 font-sans font-bold'>
@@ -99,11 +123,13 @@ const Hero: React.FC = () => {
                     {/* 0{metric.id} */}
                   </div>
                   <div className='flex justify-between items-start'>
-                    <DentistryIcon
-                      name={metric.icon}
-                      className={`text-2xl ${index === 0 ? 'text-teal-500' : 'text-slate-400'}`}
-                      size={32}
-                    />
+                    {React.createElement(
+                      getMetricIcon(metric.id === 1 ? 'user' : metric.id === 2 ? 'award' : 'star'),
+                      {
+                        className: `text-2xl ${index === 0 ? 'text-teal-500' : 'text-slate-400'}`,
+                        size: 32,
+                      },
+                    )}
                     {index === 0 && <Badge variant='glow'>Verified</Badge>}
                   </div>
                   <div className='mt-8'>

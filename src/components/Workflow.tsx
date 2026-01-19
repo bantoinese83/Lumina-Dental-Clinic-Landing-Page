@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle } from 'lucide-react';
-import DentistryIcon from './ui/DentistryIcon';
+import { CheckCircle, Stethoscope, Activity, Heart } from 'lucide-react';
 import OptimizedImage from './ui/OptimizedImage';
 import { siteConfig } from '../config/config';
 
@@ -10,6 +9,20 @@ const Workflow: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const { workflow } = siteConfig;
+
+  // Map workflow step icons to Lucide React components
+  const getWorkflowIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'consultation':
+        return Stethoscope;
+      case 'treatment':
+        return Activity;
+      case 'aftercare':
+        return Heart;
+      default:
+        return Stethoscope; // fallback
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -102,11 +115,15 @@ const Workflow: React.FC = () => {
                   <div className='absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent'></div>
 
                   <div className='relative z-10 text-center'>
-                    <DentistryIcon
-                      name={step.icon}
-                      className='mx-auto text-4xl text-white mb-2 drop-shadow-lg'
-                      size={48}
-                    />
+                    {React.createElement(
+                      getWorkflowIcon(
+                        step.id === 1 ? 'consultation' : step.id === 2 ? 'treatment' : 'aftercare',
+                      ),
+                      {
+                        className: 'mx-auto text-4xl text-white mb-2 drop-shadow-lg',
+                        size: 48,
+                      },
+                    )}
                     <div
                       className={
                         'text-xs font-mono font-bold bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-white tracking-widest'
@@ -146,7 +163,15 @@ const Workflow: React.FC = () => {
                   />
                   <div className='absolute inset-0 bg-black/30'></div>
                   <div className='absolute inset-0 flex items-center justify-center z-10'>
-                    <DentistryIcon name={step.icon} className='text-white' size={40} />
+                    {React.createElement(
+                      getWorkflowIcon(
+                        step.id === 1 ? 'consultation' : step.id === 2 ? 'treatment' : 'aftercare',
+                      ),
+                      {
+                        className: 'text-white',
+                        size: 40,
+                      },
+                    )}
                   </div>
                 </div>
 

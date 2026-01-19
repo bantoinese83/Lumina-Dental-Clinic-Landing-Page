@@ -1,11 +1,23 @@
 import React from 'react';
 import Reveal from './ui/Reveal';
 import Section from './ui/Section';
-import DentistryIcon from './ui/DentistryIcon';
+import { Building2, MapPin, Phone, Mail, Award, Shield, Trophy, Smile } from 'lucide-react';
 import { siteConfig } from '../config/config';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+
+  // Map social icons to Lucide React components
+  const getSocialIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'phone':
+        return Phone;
+      case 'email':
+        return Mail;
+      default:
+        return Phone; // fallback
+    }
+  };
 
   const footerSections = [
     {
@@ -44,7 +56,7 @@ const Footer: React.FC = () => {
         <div className='container mx-auto px-4 max-w-7xl py-4'>
           <Reveal width='100%'>
             <div className='flex items-center justify-center gap-3 text-sm font-medium text-red-700'>
-              <DentistryIcon name='clinic' size={20} className='text-red-500' />
+              <Building2 size={20} className='text-red-500' />
               <span>Emergency Dental Care Available 24/7 - Call (555) 123-4567</span>
             </div>
           </Reveal>
@@ -59,7 +71,7 @@ const Footer: React.FC = () => {
             <Reveal width='100%'>
               <div className='flex items-center gap-3 mb-6'>
                 <div className='w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/25'>
-                  <DentistryIcon name='clinic' size={32} className='text-white' />
+                  <Building2 size={32} className='text-white' />
                 </div>
                 <div>
                   <h3 className='text-xl font-bold font-display text-slate-900 uppercase tracking-tight'>
@@ -82,15 +94,15 @@ const Footer: React.FC = () => {
             <Reveal width='100%' delay={0.2}>
               <div className='space-y-4'>
                 <div className='flex items-center gap-4 text-sm text-slate-600'>
-                  <DentistryIcon name='location' size={20} className='text-teal-500' />
+                  <MapPin size={20} className='text-teal-500' />
                   <span className='font-sans'>{siteConfig.location}</span>
                 </div>
                 <div className='flex items-center gap-4 text-sm text-slate-600'>
-                  <DentistryIcon name='phone' size={20} className='text-teal-500' />
+                  <Phone size={20} className='text-teal-500' />
                   <span className='font-sans'>(555) 123-4567</span>
                 </div>
                 <div className='flex items-center gap-4 text-sm text-slate-600'>
-                  <DentistryIcon name='email' size={20} className='text-teal-500' />
+                  <Mail size={20} className='text-teal-500' />
                   <span className='font-sans'>{siteConfig.email}</span>
                 </div>
               </div>
@@ -131,7 +143,7 @@ const Footer: React.FC = () => {
               <div className='flex-1'>
                 <div className='flex items-center gap-3 mb-3'>
                   <div className='w-10 h-10 bg-gradient-to-br from-teal-500 to-blue-600 rounded-lg flex items-center justify-center'>
-                    <DentistryIcon name='email' size={20} className='text-white' />
+                    <Mail size={20} className='text-white' />
                   </div>
                   <h4 className='text-lg font-bold text-slate-900 font-display uppercase tracking-tight'>
                     Stay Connected
@@ -190,20 +202,22 @@ const Footer: React.FC = () => {
             {/* Social Links */}
             <Reveal width='100%' delay={0.1}>
               <div className='flex items-center gap-3'>
-                {siteConfig.socials.map((social: any) => (
-                  <a
-                    key={social.platform}
-                    href={social.url}
-                    className='w-12 h-12 bg-white hover:bg-gradient-to-br hover:from-teal-500 hover:to-blue-600 border border-slate-200 hover:border-transparent rounded-xl flex items-center justify-center transition-all duration-200 group shadow-sm hover:shadow-md'
-                    aria-label={social.platform}
-                  >
-                    <DentistryIcon
-                      name={social.icon}
-                      size={24}
-                      className='text-slate-500 group-hover:text-white transition-colors'
-                    />
-                  </a>
-                ))}
+                {siteConfig.socials.map(social => {
+                  const SocialIcon = getSocialIcon(social.platform.toLowerCase());
+                  return (
+                    <a
+                      key={social.platform}
+                      href={social.url}
+                      className='w-12 h-12 bg-white hover:bg-gradient-to-br hover:from-teal-500 hover:to-blue-600 border border-slate-200 hover:border-transparent rounded-xl flex items-center justify-center transition-all duration-200 group shadow-sm hover:shadow-md'
+                      aria-label={social.platform}
+                    >
+                      <SocialIcon
+                        size={24}
+                        className='text-slate-500 group-hover:text-white transition-colors'
+                      />
+                    </a>
+                  );
+                })}
 
                 {/* Additional Social Links */}
                 <a
@@ -211,8 +225,7 @@ const Footer: React.FC = () => {
                   className='w-12 h-12 bg-white hover:bg-blue-600 border border-slate-200 hover:border-transparent rounded-xl flex items-center justify-center transition-all duration-200 group shadow-sm hover:shadow-md'
                   aria-label='Facebook'
                 >
-                  <DentistryIcon
-                    name='clinic'
+                  <Building2
                     size={24}
                     className='text-slate-500 group-hover:text-white transition-colors'
                   />
@@ -222,8 +235,7 @@ const Footer: React.FC = () => {
                   className='w-12 h-12 bg-white hover:bg-pink-600 border border-slate-200 hover:border-transparent rounded-xl flex items-center justify-center transition-all duration-200 group shadow-sm hover:shadow-md'
                   aria-label='Instagram'
                 >
-                  <DentistryIcon
-                    name='smile'
+                  <Smile
                     size={24}
                     className='text-slate-500 group-hover:text-white transition-colors'
                   />
@@ -237,15 +249,15 @@ const Footer: React.FC = () => {
             <div className='mt-8 pt-8 border-t border-slate-200'>
               <div className='flex flex-col sm:flex-row items-center justify-center gap-8 text-xs text-slate-500 uppercase tracking-widest font-medium'>
                 <div className='flex items-center gap-3'>
-                  <DentistryIcon name='certificate' size={20} className='text-teal-500' />
+                  <Award size={20} className='text-teal-500' />
                   <span className='font-sans'>ADA Accredited Practice</span>
                 </div>
                 <div className='flex items-center gap-3'>
-                  <DentistryIcon name='shield' size={20} className='text-teal-500' />
+                  <Shield size={20} className='text-teal-500' />
                   <span className='font-sans'>HIPAA Compliant</span>
                 </div>
                 <div className='flex items-center gap-3'>
-                  <DentistryIcon name='award' size={20} className='text-teal-500' />
+                  <Trophy size={20} className='text-teal-500' />
                   <span className='font-sans'>Member of Local Dental Association</span>
                 </div>
               </div>

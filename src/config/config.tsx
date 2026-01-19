@@ -1,4 +1,4 @@
-// Using custom dentistry icons instead of Lucide React
+// Using Lucide React icons
 import { SiteConfig } from '../types/types';
 
 export const siteConfig: SiteConfig = {
@@ -14,14 +14,13 @@ export const siteConfig: SiteConfig = {
     { label: 'Reviews', href: '#reviews' },
   ],
   socials: [
-    { platform: 'Phone', url: 'tel:555-123-4567', icon: 'phone' },
-    { platform: 'Email', url: 'mailto:care@luminadental.com', icon: 'email' },
+    { platform: 'Phone', url: 'tel:555-123-4567' },
+    { platform: 'Email', url: 'mailto:care@luminadental.com' },
   ],
   hero: {
     status: {
       label: 'Next Availability',
       value: 'Today at 2:00 PM',
-      icon: 'calendar',
     },
     headline: {
       prefix: 'Modern Dentistry.',
@@ -38,7 +37,6 @@ export const siteConfig: SiteConfig = {
       label: 'Patients Treated',
       value: 12500,
       prefix: '+',
-      icon: 'user',
     },
     {
       id: 2,
@@ -46,14 +44,12 @@ export const siteConfig: SiteConfig = {
       value: 15,
       prefix: '',
       suffix: '+',
-      icon: 'award',
     },
     {
       id: 3,
       label: '5-Star Reviews',
       value: 480,
       prefix: '',
-      icon: 'star',
     },
   ],
   workflow: {
@@ -68,7 +64,6 @@ export const siteConfig: SiteConfig = {
         details: ['3D Cone Beam Imaging', 'Digital Smile Design', 'Insurance Verification'],
         image:
           'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1600&auto=format&fit=crop',
-        icon: 'consultation',
         accentColor: 'text-teal-500',
         monoText: 'DIAGNOSTICS INITIALIZED',
       },
@@ -80,7 +75,6 @@ export const siteConfig: SiteConfig = {
         details: ['Sedation Options', 'Laser Dentistry', 'Noise-Canceling Headphones'],
         image:
           'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1600&auto=format&fit=crop',
-        icon: 'treatment',
         accentColor: 'text-blue-500',
         monoText: 'COMFORT PROTOCOLS ACTIVE',
       },
@@ -92,7 +86,6 @@ export const siteConfig: SiteConfig = {
         details: ['Digital Care Plan', '24/7 Virtual Support', 'Whitening Take-Home Kit'],
         image:
           'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=1600&auto=format&fit=crop',
-        icon: 'aftercare',
         accentColor: 'text-indigo-500',
         monoText: 'SMILE OPTIMIZED',
       },
@@ -154,7 +147,6 @@ export const siteConfig: SiteConfig = {
           'I used to be terrified of the dentist. Lumina changed everything. The laser treatment was painless, and the staff is incredibly kind.',
         author: 'Sarah Jenkins',
         role: 'Patient since 2021',
-        companyIcon: 'heart',
       },
       {
         id: 2,
@@ -162,7 +154,6 @@ export const siteConfig: SiteConfig = {
           'The digital scanning technology is amazing. No more goopy molds! My Invisalign trays fit perfectly from day one.',
         author: 'Michael Ross',
         role: 'Invisalign Patient',
-        companyIcon: 'shield',
       },
       {
         id: 3,
@@ -170,7 +161,6 @@ export const siteConfig: SiteConfig = {
           "Dr. Evans is an artist. My veneers look so natural, I can't stop smiling. Best investment I've ever made.",
         author: 'Elena R.',
         role: 'Cosmetic Patient',
-        companyIcon: 'star',
       },
     ],
   },

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DentistryIcon from './ui/DentistryIcon';
+import { Mail, MapPin, Smile } from 'lucide-react';
 import Reveal from './ui/Reveal';
 import Section from './ui/Section';
 import Button from './ui/Button';
@@ -72,13 +72,13 @@ const Contact: React.FC = () => {
           <div className='space-y-4 font-sans text-sm'>
             <div className='flex items-center gap-4 text-slate-600 group cursor-pointer hover:text-teal-600 transition-colors'>
               <div className='w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm border border-slate-100'>
-                <DentistryIcon name='email' size={20} />
+                <Mail size={20} />
               </div>
               <span className='font-medium'>{siteConfig.email}</span>
             </div>
             <div className='flex items-center gap-4 text-slate-600'>
               <div className='w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm border border-slate-100'>
-                <DentistryIcon name='location' size={20} />
+                <MapPin size={20} />
               </div>
               <span className='font-medium'>{siteConfig.location}</span>
             </div>
@@ -197,7 +197,7 @@ const Contact: React.FC = () => {
                 {submitStatus === 'success' && (
                   <div className='mt-4 p-3 bg-green-50 border border-green-200 rounded-lg'>
                     <div className='flex items-center gap-2 text-green-800'>
-                      <DentistryIcon name='smile' size={16} />
+                      <Smile size={16} />
                       <span className='text-sm font-medium'>
                         Thank you! We&apos;ll contact you within 2 hours.
                       </span>

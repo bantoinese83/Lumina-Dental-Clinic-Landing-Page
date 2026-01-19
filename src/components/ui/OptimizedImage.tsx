@@ -72,8 +72,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   };
 
   // Fallback for broken images
-  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-  const fallbackSrc = placeholder || '/icons/021-dentist.svg';
+  const fallbackSrc = placeholder;
 
   return (
     <div className={`relative overflow-hidden ${className}`} style={{ width, height }} ref={imgRef}>

@@ -9,7 +9,6 @@ export interface Metric {
   value: number;
   prefix?: string;
   suffix?: string;
-  icon: string;
 }
 
 export interface WorkflowStep {
@@ -18,7 +17,6 @@ export interface WorkflowStep {
   description: string;
   details: string[];
   image: string;
-  icon: string;
   accentColor: string;
   monoText: string;
 }
@@ -36,13 +34,11 @@ export interface Testimonial {
   quote: string;
   author: string;
   role: string;
-  companyIcon: string;
 }
 
 export interface SocialLink {
   platform: string;
   url: string;
-  icon: string;
 }
 
 export interface SiteConfig {
@@ -57,7 +53,6 @@ export interface SiteConfig {
     status: {
       label: string;
       value: string;
-      icon: string;
     };
     headline: {
       prefix: string;

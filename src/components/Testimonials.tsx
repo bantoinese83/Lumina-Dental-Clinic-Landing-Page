@@ -1,9 +1,23 @@
 import React from 'react';
-import DentistryIcon from './ui/DentistryIcon';
+import { Heart, Shield, Star } from 'lucide-react';
 import { siteConfig } from '../config/config';
 
 const Testimonials: React.FC = () => {
   const { testimonials } = siteConfig;
+
+  // Map testimonial icons to Lucide React components
+  const getTestimonialIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'heart':
+        return Heart;
+      case 'shield':
+        return Shield;
+      case 'star':
+        return Star;
+      default:
+        return Heart; // fallback
+    }
+  };
 
   return (
     <section
@@ -35,11 +49,15 @@ const Testimonials: React.FC = () => {
                 </p>
                 <div className='flex items-center gap-3'>
                   <div className='w-10 h-10 flex items-center justify-center bg-white border border-slate-100 rounded-full group-hover:bg-teal-50 group-hover:text-teal-600 transition-colors shadow-sm'>
-                    <DentistryIcon
-                      name={item.companyIcon}
-                      className='text-slate-400 group-hover:text-teal-600'
-                      size={20}
-                    />
+                    {React.createElement(
+                      getTestimonialIcon(
+                        item.id === 1 ? 'heart' : item.id === 2 ? 'shield' : 'star',
+                      ),
+                      {
+                        className: 'text-slate-400 group-hover:text-teal-600',
+                        size: 20,
+                      },
+                    )}
                   </div>
                   <div>
                     <div className='text-xs text-slate-900 uppercase font-bold font-sans'>

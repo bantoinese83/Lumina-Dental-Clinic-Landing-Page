@@ -1,5 +1,5 @@
 import React from 'react';
-import DentistryIcon from './ui/DentistryIcon';
+import { Award, Building2, Download } from 'lucide-react';
 import Section from './ui/Section';
 
 const Credentials: React.FC = () => {
@@ -30,6 +30,20 @@ const Credentials: React.FC = () => {
     },
   ];
 
+  // Map credential icons to Lucide React components
+  const getCredentialIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'certificate':
+        return Award;
+      case 'clinic':
+        return Building2;
+      case 'download':
+        return Download;
+      default:
+        return Award; // fallback
+    }
+  };
+
   const handleDownload = (_fileName: string) => {
     // In a real implementation, this would call an API endpoint
     // For now, show a placeholder message
@@ -56,7 +70,7 @@ const Credentials: React.FC = () => {
             className='bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg hover:border-teal-200 transition-all duration-300 group'
           >
             <div className='flex items-center justify-center w-12 h-12 bg-teal-50 rounded-lg mb-4 group-hover:bg-teal-100 transition-colors'>
-              <DentistryIcon name={credential.icon} size={24} />
+              {React.createElement(getCredentialIcon(credential.icon), { size: 24 })}
             </div>
 
             <h3 className='text-lg font-semibold text-slate-900 mb-2 font-display'>
@@ -74,7 +88,7 @@ const Credentials: React.FC = () => {
               onClick={() => handleDownload(credential.fileName)}
               className='w-full flex items-center justify-center gap-2 bg-teal-600 text-white py-2 px-4 rounded-lg hover:bg-teal-700 transition-colors font-medium'
             >
-              <DentistryIcon name='download' size={16} />
+              <Download size={16} />
               Download PDF
             </button>
           </div>

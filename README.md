@@ -156,7 +156,7 @@ This project features **80 premium custom dentistry-themed SVG icons** professio
 
 ### Technical Implementation:
 
-- **DentistryIcon Component**: Centralized icon rendering system
+- **Lucide React Icons**: Modern icon system for consistent UI
 - **Semantic Mapping**: Meaningful names to SVG file mappings
 - **Fallback System**: Default icons for missing assets
 - **Responsive Sizing**: Optimized for all screen sizes
@@ -196,7 +196,7 @@ All icons are professionally designed and provide a cohesive, premium visual exp
 │   │   ├── ui/              # Reusable UI components
 │   │   │   ├── Button.tsx   # Custom button component
 │   │   │   ├── Counter.tsx  # Animated counter
-│   │   │   ├── DentistryIcon.tsx # Custom icon system
+│   │   │   ├── OptimizedImage.tsx # Image optimization component
 │   │   │   ├── ErrorBoundary.tsx # Error handling
 │   │   │   ├── Layout.tsx   # Layout wrapper
 │   │   │   ├── OptimizedImage.tsx # Image optimization
