@@ -59,8 +59,10 @@ const DentistryIcon: React.FC<DentistryIconProps> = ({ name, className = '', siz
       onError={e => {
         // Fallback to a default icon if the custom icon fails to load
         const target = e.target as HTMLImageElement;
+        console.warn(`Failed to load icon: ${fileName}, falling back to default`);
         target.src = '/icons/021-dentist.svg'; // Default dentist icon
       }}
+      loading="lazy"
     />
   );
 };
