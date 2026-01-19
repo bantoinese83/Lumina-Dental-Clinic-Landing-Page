@@ -9,9 +9,9 @@
       }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/((?!api/).*)",
+      "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ]
