@@ -50,8 +50,30 @@ const Hero: React.FC = () => {
 
           {/* Main Title */}
           <div className='flex flex-col z-10 w-full items-center justify-center'>
-            <h1 className='uppercase leading-[0.9] flex flex-wrap justify-center gap-x-4 md:text-8xl md:gap-x-6 text-5xl font-bold text-slate-900 tracking-tighter mt-8 mb-4'>
+            {/* Trust Badges */}
+            <div className='flex flex-wrap justify-center gap-3 mb-6'>
+              <Reveal delay={0.1}>
+                <div className='flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 rounded-full px-4 py-2 shadow-sm hover-lift transition-all duration-300 animate-fade-in-scale'>
+                  <div className='w-2 h-2 bg-green-500 rounded-full animate-pulse'></div>
+                  <span className='text-xs font-semibold text-slate-700 uppercase tracking-wider'>ADA Accredited</span>
+                </div>
+              </Reveal>
+              <Reveal delay={0.15}>
+                <div className='flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 rounded-full px-4 py-2 shadow-sm hover-lift transition-all duration-300 animate-fade-in-scale'>
+                  <div className='text-yellow-500 animate-bounce-gentle'>★★★★★</div>
+                  <span className='text-xs font-semibold text-slate-700'>4.8/5 (480+ Reviews)</span>
+                </div>
+              </Reveal>
               <Reveal delay={0.2}>
+                <div className='flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-slate-200 rounded-full px-4 py-2 shadow-sm hover-lift transition-all duration-300 animate-fade-in-scale'>
+                  <div className='w-2 h-2 bg-teal-500 rounded-full animate-glow-pulse'></div>
+                  <span className='text-xs font-semibold text-slate-700 uppercase tracking-wider'>15+ Years Experience</span>
+                </div>
+              </Reveal>
+            </div>
+
+            <h1 className='uppercase leading-[0.9] flex flex-wrap justify-center gap-x-4 md:text-8xl md:gap-x-6 text-5xl font-bold text-slate-900 tracking-tighter mt-2 mb-4'>
+              <Reveal delay={0.25}>
                 <motion.span
                   className='tracking-tighter font-display inline-block text-slate-800'
                   animate={{ y: [0, -5, 0] }}
@@ -60,7 +82,7 @@ const Hero: React.FC = () => {
                   {hero.headline.prefix}
                 </motion.span>
               </Reveal>
-              <Reveal delay={0.3}>
+              <Reveal delay={0.35}>
                 <motion.span
                   className='text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600 font-display inline-block'
                   animate={{ y: [0, -10, 0] }}

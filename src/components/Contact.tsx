@@ -183,12 +183,13 @@ const Contact: React.FC = () => {
                 <Button
                   type='submit'
                   variant='primary'
-                  icon={submitStatus === 'success'}
+                  icon={submitStatus === 'success' && !isSubmitting}
                   className='w-full'
                   disabled={isSubmitting}
+                  loading={isSubmitting}
                 >
                   {isSubmitting
-                    ? 'Sending...'
+                    ? 'Sending Message...'
                     : submitStatus === 'success'
                       ? 'Message Sent!'
                       : 'Request Appointment'}

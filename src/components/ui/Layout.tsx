@@ -1,4 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
+import { Phone } from 'lucide-react';
+import Button from './Button';
 
 interface LayoutProps {
   children: ReactNode;
@@ -8,6 +10,23 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [pullDistance, setPullDistance] = useState(0);
   const [startY, setStartY] = useState(0);
+  const [showFloatingCTA, setShowFloatingCTA] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Handle scroll for floating CTA and progress indicator
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const maxHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrolled / maxHeight) * 100;
+
+      setShowFloatingCTA(scrolled > 300);
+      setScrollProgress(Math.min(progress, 100));
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Simple pull-to-refresh functionality for mobile
   useEffect(() => {
@@ -60,6 +79,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className='relative min-h-screen font-sans text-slate-600 bg-slate-50 overflow-x-hidden selection:bg-teal-500/20 selection:text-teal-900'>
+      {/* Scroll Progress Indicator */}
+      <div className='fixed top-0 left-0 right-0 z-50 h-1 bg-slate-200'>
+        <div
+          className='h-full bg-gradient-to-r from-teal-500 to-blue-500 transition-all duration-300 ease-out'
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
       {/* Pull-to-refresh indicator for mobile */}
       {pullDistance > 0 && (
         <div
@@ -87,6 +114,20 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       </div>
 
       <main className='relative z-10'>{children}</main>
+
+      {/* Floating CTA Button */}
+      {showFloatingCTA && (
+        <div className='fixed bottom-6 right-6 z-50 animate-[fadeIn_0.3s_ease-out]'>
+          <Button
+            href='tel:555-123-4567'
+            variant='glow'
+            className='shadow-2xl shadow-teal-500/25'
+          >
+            <Phone size={20} className='mr-2' />
+            Call Now
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

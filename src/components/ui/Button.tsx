@@ -1,11 +1,12 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Loader2 } from 'lucide-react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'glow' | 'link' | 'icon';
   children: React.ReactNode;
   icon?: boolean;
   href?: string;
+  loading?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -14,6 +15,7 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   className = '',
   href,
+  loading = false,
   ...props
 }) => {
   const baseStyles =
@@ -29,8 +31,11 @@ const Button: React.FC<ButtonProps> = ({
 
   const content = (
     <>
+      {loading && (
+        <Loader2 className='w-4 h-4 animate-spin mr-2' />
+      )}
       <span className={variant !== 'icon' ? 'relative z-10' : ''}>{children}</span>
-      {icon && (
+      {icon && !loading && (
         <ArrowRight className='ml-2 w-4 h-4 text-teal-500 transform group-hover:translate-x-1 transition-transform' />
       )}
     </>
