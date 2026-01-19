@@ -25,8 +25,12 @@ export interface CaseStudy {
   id: number;
   title: string;
   category: string;
+  description?: string;
+  duration?: string;
+  result?: string;
   image: string;
   span?: 'full' | 'third';
+  isBeforeAfter?: boolean;
 }
 
 export interface Testimonial {

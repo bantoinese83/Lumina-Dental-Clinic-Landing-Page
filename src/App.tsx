@@ -12,6 +12,7 @@ import Reveal from './components/ui/Reveal';
 import Button from './components/ui/Button';
 import Section from './components/ui/Section';
 import ErrorBoundary from './components/ui/ErrorBoundary';
+import { Flame, Gem } from 'lucide-react';
 import { siteConfig } from './config/config';
 
 const App: React.FC = () => {
@@ -103,11 +104,11 @@ const App: React.FC = () => {
                   <div className='flex items-center justify-center gap-4 text-sm text-slate-500'>
                     <div className='flex items-center gap-2'>
                       <div className='w-2 h-2 bg-red-500 rounded-full animate-pulse'></div>
-                      <span>🔥 Only 3 appointments left this week</span>
+                      <span><Flame className='w-4 h-4 inline mr-2 text-orange-500' /> Only 3 appointments left this week</span>
                     </div>
                     <div className='hidden sm:block w-px h-4 bg-slate-300'></div>
                     <div className='hidden sm:flex items-center gap-2'>
-                      <span>💎 Free consultation for new patients</span>
+                      <span><Gem className='w-4 h-4 inline mr-2 text-blue-500' /> Free consultation for new patients</span>
                     </div>
                   </div>
                 </div>
