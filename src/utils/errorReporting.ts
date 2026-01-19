@@ -7,8 +7,8 @@ export const reportError = async (error: Error, errorInfo?: { componentStack?: s
       stack: error.stack,
       componentStack: errorInfo?.componentStack,
       timestamp: new Date().toISOString(),
-      userAgent: navigator.userAgent,
-      url: window.location.href,
+      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'unknown',
+      url: typeof window !== 'undefined' ? window.location.href : 'unknown',
     });
     return;
   }
@@ -20,9 +20,9 @@ export const reportError = async (error: Error, errorInfo?: { componentStack?: s
       stack: error.stack,
       componentStack: errorInfo?.componentStack,
       timestamp: new Date().toISOString(),
-      userAgent: navigator.userAgent,
-      url: window.location.href,
-      userId: localStorage.getItem('userId'), // If you track users
+      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'unknown',
+      url: typeof window !== 'undefined' ? window.location.href : 'unknown',
+      userId: typeof localStorage !== 'undefined' ? localStorage.getItem('userId') : null, // If you track users
     };
 
     // Send to your error reporting service
@@ -43,7 +43,6 @@ export const reportError = async (error: Error, errorInfo?: { componentStack?: s
     //   headers: { 'Content-Type': 'application/json' },
     //   body: JSON.stringify(errorData),
     // });
-
   } catch (reportingError) {
     // Don't let error reporting break the app
     console.error('Failed to report error:', reportingError);
@@ -51,7 +50,7 @@ export const reportError = async (error: Error, errorInfo?: { componentStack?: s
 };
 
 // Performance monitoring helper
-export const reportPerformance = (metric: string, value: number) => {
+export const reportPerformance = async (metric: string, value: number) => {
   if (process.env['NODE_ENV'] === 'development') {
     console.log(`Performance: ${metric} = ${value}ms`);
     return;
@@ -60,8 +59,8 @@ export const reportPerformance = (metric: string, value: number) => {
   // In production, send to analytics/monitoring service
   try {
     // Example: Google Analytics, Mixpanel, etc.
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'performance_metric', {
+    if (typeof window !== 'undefined' && typeof (window as any).gtag !== 'undefined') {
+      (window as any).gtag('event', 'performance_metric', {
         event_category: 'performance',
         event_label: metric,
         value: Math.round(value),

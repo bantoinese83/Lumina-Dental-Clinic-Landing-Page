@@ -4,7 +4,7 @@
   "installCommand": "npm install",
   "rewrites": [
     {
-      "source": "/((?!api|_next|icons|manifest.json|sw.js).*)",
+      "source": "/((?!api|_next|icons).*)",
       "destination": "/index.html"
     }
   ]

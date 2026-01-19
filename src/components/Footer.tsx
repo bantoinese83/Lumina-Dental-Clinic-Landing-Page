@@ -74,8 +74,8 @@ const Footer: React.FC = () => {
 
             <Reveal width='100%' delay={0.1}>
               <p className='text-slate-600 text-sm leading-relaxed mb-8 font-sans'>
-                {siteConfig.description}. Experience compassionate, state-of-the-art dental care
-                in a comfortable, welcoming environment designed around your comfort and confidence.
+                {siteConfig.description}. Experience compassionate, state-of-the-art dental care in
+                a comfortable, welcoming environment designed around your comfort and confidence.
               </p>
             </Reveal>
 
@@ -138,7 +138,8 @@ const Footer: React.FC = () => {
                   </h4>
                 </div>
                 <p className='text-slate-600 text-sm font-sans leading-relaxed'>
-                  Get oral health tips, appointment reminders, and clinic updates delivered to your inbox.
+                  Get oral health tips, appointment reminders, and clinic updates delivered to your
+                  inbox.
                 </p>
               </div>
               <div className='flex flex-col sm:flex-row gap-3 w-full md:w-auto md:min-w-[300px]'>
@@ -164,13 +165,22 @@ const Footer: React.FC = () => {
                   © {currentYear} {siteConfig.name}. All Rights Reserved.
                 </p>
                 <div className='flex gap-6'>
-                  <a href='#' className='hover:text-teal-600 transition-colors font-sans font-medium'>
+                  <a
+                    href='#'
+                    className='hover:text-teal-600 transition-colors font-sans font-medium'
+                  >
                     Privacy Policy
                   </a>
-                  <a href='#' className='hover:text-teal-600 transition-colors font-sans font-medium'>
+                  <a
+                    href='#'
+                    className='hover:text-teal-600 transition-colors font-sans font-medium'
+                  >
                     Terms of Service
                   </a>
-                  <a href='#' className='hover:text-teal-600 transition-colors font-sans font-medium'>
+                  <a
+                    href='#'
+                    className='hover:text-teal-600 transition-colors font-sans font-medium'
+                  >
                     HIPAA Notice
                   </a>
                 </div>
@@ -187,11 +197,11 @@ const Footer: React.FC = () => {
                     className='w-12 h-12 bg-white hover:bg-gradient-to-br hover:from-teal-500 hover:to-blue-600 border border-slate-200 hover:border-transparent rounded-xl flex items-center justify-center transition-all duration-200 group shadow-sm hover:shadow-md'
                     aria-label={social.platform}
                   >
-                  <DentistryIcon
-                    name={social.icon}
-                    size={24}
-                    className='text-slate-500 group-hover:text-white transition-colors'
-                  />
+                    <DentistryIcon
+                      name={social.icon}
+                      size={24}
+                      className='text-slate-500 group-hover:text-white transition-colors'
+                    />
                   </a>
                 ))}
 

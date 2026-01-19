@@ -1,6 +1,6 @@
 # Lumina Dental Clinic Landing Page
 
-A high-performance, production-ready dental clinic landing page built with React 19, TypeScript, and Vite. Features a modern design system, comprehensive error handling, PWA capabilities, and enterprise-level optimizations.
+A high-performance, production-ready dental clinic landing page built with React 19, TypeScript, and Vite. Features a modern design system, comprehensive error handling, and enterprise-level optimizations.
 
 ## 🚀 Features
 
@@ -12,7 +12,6 @@ A high-performance, production-ready dental clinic landing page built with React
 - **Emergency Care**: 24/7 emergency dental services banner and information
 - **PDF Credentials**: Integrated credentials display and download functionality
 - **Error Handling**: Comprehensive error boundaries with user-friendly fallbacks
-- **PWA Ready**: Progressive Web App with service worker, offline functionality, and manifest
 - **Performance Monitoring**: Core Web Vitals tracking and analytics integration
 - **Bundle Analysis**: Built-in bundle analyzer for optimization insights
 - **Responsive Design**: Mobile-first design with modern UI/UX patterns
@@ -26,7 +25,6 @@ A high-performance, production-ready dental clinic landing page built with React
 - **Animations**: Framer Motion with Reveal components
 - **Backend**: Node.js, Express with security middleware
 - **Error Handling**: React Error Boundaries with reporting
-- **PWA**: Service Worker, Web App Manifest, offline functionality
 - **Performance**: Core Web Vitals monitoring, bundle analysis
 - **Security**: Helmet, CORS, input sanitization, rate limiting
 - **Email**: Nodemailer with OAuth2 and App Password support
@@ -149,6 +147,7 @@ npm run quality  # Run complete quality pipeline
 This project features **80 premium custom dentistry-themed SVG icons** professionally integrated throughout the landing page:
 
 ### Icon Categories:
+
 - **Dental Procedures**: Implants, crowns, braces, root canals, surgery
 - **Equipment & Tools**: Drills, x-rays, dental chairs, extraction tools
 - **Healthcare Elements**: Checkups, certificates, wellness, hygiene
@@ -156,6 +155,7 @@ This project features **80 premium custom dentistry-themed SVG icons** professio
 - **Patient Care**: Smile, teeth, cleaning, prevention, emergency
 
 ### Technical Implementation:
+
 - **DentistryIcon Component**: Centralized icon rendering system
 - **Semantic Mapping**: Meaningful names to SVG file mappings
 - **Fallback System**: Default icons for missing assets
@@ -167,22 +167,22 @@ All icons are professionally designed and provide a cohesive, premium visual exp
 ## ⚡ Advanced Features
 
 ### Error Handling & Reliability
+
 - **React Error Boundaries**: Graceful error recovery with user-friendly fallbacks
 - **Error Reporting**: Production error logging with context and user information
 - **Performance Monitoring**: Core Web Vitals tracking and analytics integration
 
-### PWA & Offline Capabilities
-- **Service Worker**: Background sync, caching strategies, and offline functionality
-- **Web App Manifest**: Installable PWA with shortcuts and theme configuration
 - **Offline Support**: Graceful degradation when network is unavailable
 
 ### Security & Performance
+
 - **Security Headers**: Helmet.js with comprehensive security middleware
 - **Input Sanitization**: XSS protection and data validation
 - **Rate Limiting**: API protection against abuse
 - **Bundle Analysis**: Rollup visualizer for optimization insights
 
 ### Developer Experience
+
 - **TypeScript Strict Mode**: 100% type safety with strict compiler options
 - **Code Quality**: ESLint, Prettier, and Knip for consistent, clean code
 - **Hot Reload**: Fast development with Vite's instant updates
@@ -227,8 +227,6 @@ All icons are professionally designed and provide a cohesive, premium visual exp
 │   └── server.js            # Express server with email API
 ├── public/                  # Static assets
 │   ├── icons/              # Custom dentistry icons (80 SVGs)
-│   ├── sw.js              # Service worker
-│   ├── manifest.json      # PWA manifest
 │   └── favicon.ico        # Favicon
 ├── docs/                   # Documentation
 │   └── DEPLOYMENT.md      # Deployment guide
@@ -291,7 +289,6 @@ Site content is managed through `config.tsx`. Update this file to modify:
 
 - [x] PDF credentials integration (completed)
 - [x] Error boundaries and monitoring (completed)
-- [x] PWA and offline functionality (completed)
 - [x] Performance optimization (completed)
 - [ ] Backend API for dynamic content management
 - [ ] Appointment booking system integration

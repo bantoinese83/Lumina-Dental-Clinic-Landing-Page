@@ -62,7 +62,7 @@ const DentistryIcon: React.FC<DentistryIconProps> = ({ name, className = '', siz
         console.warn(`Failed to load icon: ${fileName}, falling back to default`);
         target.src = '/icons/021-dentist.svg'; // Default dentist icon
       }}
-      loading="lazy"
+      loading='lazy'
     />
   );
 };
