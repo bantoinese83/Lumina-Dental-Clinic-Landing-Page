@@ -1,0 +1,45 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": [
+    "index.html",
+    "src/index.tsx",
+    "src/**/*.{ts,tsx}",
+    "server/server.js",
+    "vite.config.ts"
+  ],
+  "project": ["**/*.{ts,tsx}", "!node_modules/**", "!dist/**"],
+  "ignore": [
+    "**/*.config.{js,ts}",
+    "**/*.d.ts",
+    "node_modules/**",
+    "dist/**",
+    "coverage/**",
+    ".cache/**",
+    ".temp/**"
+  ],
+  "ignoreDependencies": [
+    "@types/node",
+    "@vitejs/plugin-react",
+    "@typescript-eslint/parser",
+    "@typescript-eslint/eslint-plugin",
+    "eslint-plugin-react",
+    "eslint-plugin-react-hooks",
+    "eslint-plugin-react-refresh",
+    "eslint-plugin-prettier",
+    "eslint-config-prettier",
+    "prettier"
+  ],
+  "ignoreBinaries": ["vite", "tsc", "eslint", "prettier"],
+  "rules": {
+    "files": "error",
+    "dependencies": "error",
+    "devDependencies": "error",
+    "unlisted": "error",
+    "exports": "error",
+    "nsExports": "error",
+    "nsTypes": "error",
+    "types": "error",
+    "enumMembers": "error",
+    "classMembers": "error"
+  }
+}
