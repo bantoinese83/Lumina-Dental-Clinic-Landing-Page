@@ -105,7 +105,7 @@ const Contact: React.FC = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className='outline-none focus:border-teal-500 transition-colors peer placeholder-transparent text-slate-800 font-sans bg-transparent w-full border-slate-200 border-b pt-3 pb-3'
+                  className='outline-none focus:border-teal-500 transition-colors peer placeholder-transparent text-slate-800 font-sans bg-transparent w-full border-slate-200 border-b pt-3 pb-3 min-h-[44px]'
                   id='name'
                   placeholder='Name'
                   aria-describedby='name-error'
@@ -128,7 +128,7 @@ const Contact: React.FC = () => {
                   onChange={handleInputChange}
                   id='email'
                   required
-                  className='w-full bg-transparent border-b border-slate-200 py-3 text-slate-800 outline-none focus:border-teal-500 transition-colors font-sans peer placeholder-transparent'
+                  className='w-full bg-transparent border-b border-slate-200 py-3 text-slate-800 outline-none focus:border-teal-500 transition-colors font-sans peer placeholder-transparent min-h-[44px]'
                   placeholder='Email'
                   aria-describedby='email-error'
                   aria-invalid={!formData.email.includes('@')}
@@ -149,7 +149,7 @@ const Contact: React.FC = () => {
                   value={formData.phone}
                   onChange={handleInputChange}
                   id='phone'
-                  className='w-full bg-transparent border-b border-slate-200 py-3 text-slate-800 outline-none focus:border-teal-500 transition-colors font-sans peer placeholder-transparent'
+                  className='w-full bg-transparent border-b border-slate-200 py-3 text-slate-800 outline-none focus:border-teal-500 transition-colors font-sans peer placeholder-transparent min-h-[44px]'
                   placeholder='Phone'
                 />
                 <label
@@ -168,7 +168,7 @@ const Contact: React.FC = () => {
                   id='message'
                   rows={3}
                   required
-                  className='w-full bg-transparent border-b border-slate-200 py-3 text-slate-800 outline-none focus:border-teal-500 transition-colors font-sans peer placeholder-transparent resize-none'
+                  className='w-full bg-transparent border-b border-slate-200 py-3 text-slate-800 outline-none focus:border-teal-500 transition-colors font-sans peer placeholder-transparent resize-none min-h-[44px]'
                   placeholder='Details'
                 ></textarea>
                 <label

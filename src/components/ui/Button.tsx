@@ -21,10 +21,10 @@ const Button: React.FC<ButtonProps> = ({
 
   const variants = {
     primary:
-      'bg-gradient-to-br from-teal-600 to-blue-500 text-white px-6 py-2 rounded-full hover:opacity-90 hover:scale-105 hover:shadow-[0_4px_20px_rgba(14,165,233,0.3)]',
-    glow: 'bg-gradient-to-br from-teal-500 to-blue-600 text-white px-10 py-4 hover:scale-105 hover:shadow-[0_4px_30px_rgba(13,148,136,0.3)] rounded-full',
-    link: 'text-slate-600 hover:text-teal-600 pt-4 gap-4 group',
-    icon: 'p-2 text-slate-400 hover:text-teal-600',
+      'bg-gradient-to-br from-teal-600 to-blue-500 text-white px-6 py-3 sm:py-2 rounded-full hover:opacity-90 hover:scale-105 hover:shadow-[0_4px_20px_rgba(14,165,233,0.3)] min-h-[44px] sm:min-h-[auto]',
+    glow: 'bg-gradient-to-br from-teal-500 to-blue-600 text-white px-10 py-4 hover:scale-105 hover:shadow-[0_4px_30px_rgba(13,148,136,0.3)] rounded-full min-h-[48px]',
+    link: 'text-slate-600 hover:text-teal-600 pt-4 gap-4 group min-h-[44px] flex items-center',
+    icon: 'p-3 sm:p-2 text-slate-400 hover:text-teal-600 min-w-[44px] min-h-[44px] flex items-center justify-center',
   };
 
   const content = (

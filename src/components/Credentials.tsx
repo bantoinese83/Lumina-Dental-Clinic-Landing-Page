@@ -86,7 +86,7 @@ const Credentials: React.FC = () => {
 
             <button
               onClick={() => handleDownload(credential.fileName)}
-              className='w-full flex items-center justify-center gap-2 bg-teal-600 text-white py-2 px-4 rounded-lg hover:bg-teal-700 transition-colors font-medium'
+              className='w-full flex items-center justify-center gap-2 bg-teal-600 text-white py-3 px-4 rounded-lg hover:bg-teal-700 transition-colors font-medium min-h-[44px]'
             >
               <Download size={16} />
               Download PDF

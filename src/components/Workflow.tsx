@@ -7,8 +7,37 @@ import { siteConfig } from '../config/config';
 const Workflow: React.FC = () => {
   const [activeStep, setActiveStep] = useState(1);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const { workflow } = siteConfig;
+
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && activeStep < workflow.steps.length) {
+      setActiveStep(prev => prev + 1);
+    }
+    if (isRightSwipe && activeStep > 1) {
+      setActiveStep(prev => prev - 1);
+    }
+  };
 
   // Map workflow step icons to Lucide React components
   const getWorkflowIcon = (iconName: string) => {
@@ -45,8 +74,11 @@ const Workflow: React.FC = () => {
       id='workflows'
       ref={sectionRef}
       className='z-10 border-b border-slate-200 bg-white relative'
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
     >
-      <div className='container mx-auto px-4 max-w-7xl'>
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
         <div className='flex flex-col lg:flex-row'>
           {/* Sticky Left Side */}
           <div className='lg:w-1/2 lg:h-screen sticky top-0 flex flex-col justify-center py-12 lg:py-0 pr-0 lg:pr-20 lg:border-r border-slate-200'>
@@ -145,7 +177,7 @@ const Workflow: React.FC = () => {
               <div
                 key={step.id}
                 data-step={step.id}
-                className='workflow-step-content min-h-[50vh] lg:min-h-[80vh] flex flex-col justify-center px-0 lg:px-20 py-12 lg:py-20 border-b border-slate-100 last:border-0'
+                className='workflow-step-content min-h-[60vh] sm:min-h-[50vh] lg:min-h-[80vh] flex flex-col justify-center px-4 sm:px-8 lg:px-20 py-12 lg:py-20 border-b border-slate-100 last:border-0'
               >
                 <span className='text-6xl text-slate-100 font-bold mb-6 font-display'>
                   0{step.id}

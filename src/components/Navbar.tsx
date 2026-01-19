@@ -1,16 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import { Menu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { siteConfig } from '../config/config';
 import Button from './ui/Button';
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu when clicking outside or on navigation
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (isMobileMenuOpen && !target.closest('.mobile-menu-container')) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden'; // Prevent background scroll
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <nav
@@ -61,18 +92,54 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className='flex items-center gap-2'>
-          <Button href='#contact' variant='primary'>
+          <Button href='#contact' variant='primary' className='hidden sm:flex'>
             Book Now
           </Button>
           <Button
             variant='icon'
             className='md:hidden text-slate-500 hover:text-slate-900'
-            aria-label='Open mobile menu'
-            aria-expanded='false'
+            aria-label={isMobileMenuOpen ? 'Close mobile menu' : 'Open mobile menu'}
+            aria-expanded={isMobileMenuOpen}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            <Menu size={20} aria-hidden='true' />
+            {isMobileMenuOpen ? <X size={20} aria-hidden='true' /> : <Menu size={20} aria-hidden='true' />}
           </Button>
         </div>
+
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <div className='mobile-menu-container fixed inset-0 top-20 z-40 md:hidden'>
+            <div className='bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl mx-4 mt-4 shadow-2xl overflow-hidden'>
+              <div className='flex flex-col py-6'>
+                {/* Mobile Navigation Links */}
+                <div className='space-y-1 px-4'>
+                  {siteConfig.nav.map((link: any) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      className='block py-4 px-4 text-slate-600 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors font-medium'
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+
+                {/* Mobile CTA Button */}
+                <div className='px-4 pt-4 border-t border-slate-100 mt-4'>
+                  <Button
+                    href='#contact'
+                    variant='primary'
+                    className='w-full justify-center'
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Book Now
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
